@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String KEY_NAME = "MainActivity.order";
+
     private final static int MAX_ORDER = 9;
     private int order = 1;
 
@@ -20,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState != null) {
+            order = savedInstanceState.getInt(KEY_NAME);
+        }
 
         orderView = findViewById(R.id.order_view);
         hilbertView = findViewById(R.id.hilbert_view);
@@ -48,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         display();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_NAME, order);
     }
 
     private void display() {
