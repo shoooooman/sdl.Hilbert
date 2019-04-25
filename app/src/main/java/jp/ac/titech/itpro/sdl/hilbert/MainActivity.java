@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final static String KEY_NAME = "MainActivity.order";
 
-    private final static int MAX_ORDER = 9;
+    final static int MAX_ORDER = 10;
     private int order = 1;
 
     private TextView orderView;
